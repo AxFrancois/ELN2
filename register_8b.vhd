@@ -39,11 +39,12 @@ end register_8b;
 architecture Behavioral of register_8b is
 signal Q_int : STD_LOGIC_VECTOR (7 downto 0);
 begin
+
 	Q <= Q_int;
 	process(clk,D)
 	begin
 		if(rising_edge(clk)) then 
-			Q_int <= D
+			Q_int <= D;
 		end if;
 	end process;
 end Behavioral;

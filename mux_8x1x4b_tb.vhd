@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   19:04:56 16/02/2020 
+-- Create Date:   16:46:05 02/22/2021
 -- Design Name:   
--- Module Name:  mux_8x1x1b_tb - Testbench  
--- Project Name:  
+-- Module Name:   C:/TPELEC_3ETI/GR_C/ELN2/SCORING/EQUIPE_2/chronoscore_phase1/mux_8x1x4b_tb.vhd
+-- Project Name:  chronoscore_phase1
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: mux_8x1x1b
+-- VHDL Test Bench Created by ISE for module: mux_8x1x4b
 -- 
 -- Dependencies:
 -- 
@@ -32,29 +32,30 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY mux_8x1x1b_tb IS
-END mux_8x1x1b_tb;
+ENTITY mux_8x1x4b_tb IS
+END mux_8x1x4b_tb;
  
-ARCHITECTURE behavior OF mux_8x1x1b_tb IS 
+ARCHITECTURE behavior OF mux_8x1x4b_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT mux_8x1x1b
-    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
-		   B : in  STD_LOGIC_VECTOR (3 downto 0);
-		   C : in  STD_LOGIC_VECTOR (3 downto 0);
-		   D : in  STD_LOGIC_VECTOR (3 downto 0);
-		   E : in  STD_LOGIC_VECTOR (3 downto 0);
-		   F : in  STD_LOGIC_VECTOR (3 downto 0);
-		   G : in  STD_LOGIC_VECTOR (3 downto 0);
-		   H : in  STD_LOGIC_VECTOR (3 downto 0);
-           sel : in  STD_LOGIC_VECTOR (2 downto 0);
-           O : out  STD_LOGIC_VECTOR (3 downto 0) );
+    COMPONENT mux_8x1x4b
+    PORT(
+         A : IN  std_logic_vector(3 downto 0);
+         B : IN  std_logic_vector(3 downto 0);
+         C : IN  std_logic_vector(3 downto 0);
+         D : IN  std_logic_vector(3 downto 0);
+         E : IN  std_logic_vector(3 downto 0);
+         F : IN  std_logic_vector(3 downto 0);
+         G : IN  std_logic_vector(3 downto 0);
+         H : IN  std_logic_vector(3 downto 0);
+         sel : IN  std_logic_vector(2 downto 0);
+         O : OUT  std_logic_vector(3 downto 0)
+        );
     END COMPONENT;
     
 
    --Inputs
-   signal sel : std_logic_vector(2 downto 0) := (others => '0');
    signal A : std_logic_vector(3 downto 0) := (others => '0');
    signal B : std_logic_vector(3 downto 0) := (others => '0');
    signal C : std_logic_vector(3 downto 0) := (others => '0');
@@ -63,39 +64,63 @@ ARCHITECTURE behavior OF mux_8x1x1b_tb IS
    signal F : std_logic_vector(3 downto 0) := (others => '0');
    signal G : std_logic_vector(3 downto 0) := (others => '0');
    signal H : std_logic_vector(3 downto 0) := (others => '0');
-   
+   signal sel : std_logic_vector(2 downto 0) := (others => '0');
 
  	--Outputs
-   signal O : std_logic_vector(3 downto 0) := (others => '0');
+   signal O : std_logic_vector(3 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
-   -- appropriate port name 
- 
-   --constant <clock>_period : time := 10 ns;
+--   -- appropriate port name 
+-- 
+--   constant <clock>_period : time := 10 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: mux_8x1x1b_tb PORT MAP (
-          O => O,
-          A => A
-		  B => B
-		  C => C
-		  D => D
-		  E => E
-		  F => F
-		  G => G
-		  H => H
+   uut: mux_8x1x4b PORT MAP (
+          A => A,
+          B => B,
+          C => C,
+          D => D,
+          E => E,
+          F => F,
+          G => G,
+          H => H,
+          sel => sel,
+          O => O
         );
+		  
+sel <= "000", "001" after 100ns, "010" after 200ns, "011" after 300ns, "100" after 400ns, "101" after 500ns, "110" after 600ns, "111" after 700ns;
+A <= "0000", "1111" after 50ns;
+B <= "0001", "1110" after 150ns;
+C <= "0010", "1101" after 250ns;
+D <= "0011", "1100" after 350ns;
+E <= "0100", "1011" after 450ns;
+F <= "0101", "1010" after 550ns;
+G <= "0110", "1001" after 650ns;
+H <= "0111", "1000" after 750ns;
 
-sel <= "000", "001" after 100ns, "010" after 200ns, "011" after 300ns, "100" after 400ns, "101" after 500ns, "110" after 600ns, "111" after 700ns
-A <= "0000", "1111" after 50ns
-B <= "0001", "1110" after 150ns
-C <= "0010", "1101" after 250ns
-D <= "0011", "1100" after 350ns
-E <= "0100", "1011" after 450ns
-F <= "0101", "1010" after 550ns
-G <= "0110", "1001" after 650ns
-H <= "0111", "1000" after 750ns
-
+--
+--   -- Clock process definitions
+--   <clock>_process :process
+--   begin
+--		<clock> <= '0';
+--		wait for <clock>_period/2;
+--		<clock> <= '1';
+--		wait for <clock>_period/2;
+--   end process;
+-- 
+--
+--   -- Stimulus process
+--   stim_proc: process
+--   begin		
+--      -- hold reset state for 100 ns.
+--      wait for 100 ns;	
+--
+--      wait for <clock>_period*10;
+--
+--      -- insert stimulus here 
+--
+--      wait;
+--   end process;
 
 END;

@@ -31,23 +31,24 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Tregister_1b is
     Port ( clk : in  STD_LOGIC;
-		   T : in  STD_LOGIC;
+			  T : in  STD_LOGIC;
            Q : out  STD_LOGIC 
 		  );
 end Tregister_1b;
 
 architecture Behavioral of Tregister_1b is
-signal Q_int : STD_LOGIC;
+signal Q_int : STD_LOGIC:= '0';
 begin
 	Q <= Q_int;
 	process(clk,T)
 	begin
 		if(rising_edge(clk)) then 
 			if(T = '1') then
-				Q_int <= NOT(Q_int)
-			else
-				Q_int <= Q_int
-			end if
+				Q_int <= NOT(Q_int);
+			--non utile
+			--else
+			--	Q_int <= Q_int;
+			end if;
 		end if;
 	end process;
 end Behavioral;

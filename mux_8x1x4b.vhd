@@ -1,8 +1,8 @@
 ----------------------------------------------------------------------------------
--- Company: CPE
--- Engineer: Axel François B216
+-- Company: 
+-- Engineer: 
 -- 
--- Create Date:    08:27:56 12/15/2020 
+-- Create Date:    16:40:33 02/22/2021 
 -- Design Name: 
 -- Module Name:    mux_8x1x4b - Behavioral 
 -- Project Name: 
@@ -31,15 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity mux_8x1x4b is
     Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
-		   B : in  STD_LOGIC_VECTOR (3 downto 0);
-		   C : in  STD_LOGIC_VECTOR (3 downto 0);
-		   D : in  STD_LOGIC_VECTOR (3 downto 0);
-		   E : in  STD_LOGIC_VECTOR (3 downto 0);
-		   F : in  STD_LOGIC_VECTOR (3 downto 0);
-		   G : in  STD_LOGIC_VECTOR (3 downto 0);
-		   H : in  STD_LOGIC_VECTOR (3 downto 0);
+           B : in  STD_LOGIC_VECTOR (3 downto 0);
+           C : in  STD_LOGIC_VECTOR (3 downto 0);
+           D : in  STD_LOGIC_VECTOR (3 downto 0);
+           E : in  STD_LOGIC_VECTOR (3 downto 0);
+           F : in  STD_LOGIC_VECTOR (3 downto 0);
+           G : in  STD_LOGIC_VECTOR (3 downto 0);
+           H : in  STD_LOGIC_VECTOR (3 downto 0);
            sel : in  STD_LOGIC_VECTOR (2 downto 0);
-           O : out  STD_LOGIC_VECTOR (3 downto 0) );
+           O : out  STD_LOGIC_VECTOR (3 downto 0));
 end mux_8x1x4b;
 
 architecture Behavioral of mux_8x1x4b is

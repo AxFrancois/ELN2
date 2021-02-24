@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------------
--- Company: CPE
--- Engineer: Axel François 
+-- Company: 
+-- Engineer: Le Corre, Deschamps
 -- 
--- Create Date:    19:04:56 16/02/2020 
+-- Create Date:    14:40:19 02/22/2021 
 -- Design Name: 
 -- Module Name:    transcoder_3v8 - Behavioral 
--- Project Name: 
+-- Project Name: Projet scoring 2.0
 -- Target Devices: 
 -- Tool versions: 
 -- Description: 
@@ -44,7 +44,8 @@ begin
 		"11101111" when A= "100" else
 		"11011111" when A= "101" else
 		"10111111" when A= "110" else
-		"01111111" when A= "111" 
+		"01111111";
+
 
 end Behavioral;
 

@@ -75,27 +75,28 @@ ARCHITECTURE behavior OF mux_8x1x1b_tb IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: mux_8x1x1b_tb PORT MAP (
+   uut: mux_8x1x1b PORT MAP (
           O => O,
-          A => A
-		  B => B
-		  C => C
-		  D => D
-		  E => E
-		  F => F
-		  G => G
-		  H => H
+			 sel => sel,
+          A => A,
+		    B => B,
+		    C => C,
+		    D => D,
+		    E => E,
+		    F => F,
+		    G => G,
+		    H => H
         );
 
-sel <= "000", "001" after 100ns, "010" after 200ns, "011" after 300ns, "100" after 400ns, "101" after 500ns, "110" after 600ns, "111" after 700ns
-A <= "0", "1" after 50ns
-B <= "0", "1" after 150ns
-C <= "0", "1" after 250ns
-D <= "0", "1" after 350ns
-E <= "0", "1" after 450ns
-F <= "0", "1" after 550ns
-G <= "0", "1" after 650ns
-H <= "0", "1" after 750ns
+sel <= "000", "001" after 100ns, "010" after 200ns, "011" after 300ns, "100" after 400ns, "101" after 500ns, "110" after 600ns, "111" after 700ns;
+A <= '0', '1' after 50ns;
+B <= '0', '1' after 150ns;
+C <= '0', '1' after 250ns;
+D <= '0', '1' after 350ns;
+E <= '0', '1' after 450ns;
+F <= '0', '1' after 550ns;
+G <= '0', '1' after 650ns;
+H <= '0', '1' after 750ns;
 
 
 END;

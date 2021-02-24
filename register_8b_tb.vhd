@@ -32,10 +32,11 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY register_8b IS
-END register_8b;
+ENTITY register_8b_tb IS
+END register_8b_tb;
  
-ARCHITECTURE behavior OF register_8b IS 
+
+ARCHITECTURE behavior OF register_8b_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -57,17 +58,26 @@ ARCHITECTURE behavior OF register_8b IS
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
-   constant <clk>_period : time := 20 ns;
+   constant clk_period : time := 10 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: register_8b PORT MAP (
-		  D => D
+		  clk => clk,
+ 		  D => D,
 		  Q => Q
         );
+--Clock process definitions
+clk_process:process
+begin
+	clk<= '0';
+	wait for clk_period/2;
+	clk<= '1';
+	wait for clk_period/2;
+end process;
 
 --clk <= "0" after 25ns, "1" after 75ns, "0" after 125ns, "1" after 175ns, "0" after 225ns, "1" after 275ns, "0" after 325ns, "1" after 375ns, "0" after 425ns, "1" after 475ns, "0" after 525ns, "1" after 575ns, "0" after 625ns, "1" after 675ns, "0" after 725ns, "1" after 775ns
-D <= "00000000" after 0ns, "11111111" after 50ns, "00010001" after 100ns, "11101110" after 150ns, "00100010" after 200ns, "11011101" after 250ns, "00110011" after 300ns, "11001100" after 350ns, "01000100" after 400ns, "10111011" after 450ns, "01010101" after 500ns, "10101010" after 550ns, "01100110" after 600ns, "10011001" after 650ns, "01110111" after 700ns, "10001000" after 750ns
+D <= "00000000" after 0ns, "11111111" after 50ns, "00010001" after 100ns, "11101110" after 150ns, "00100010" after 200ns, "11011101" after 250ns, "00110011" after 300ns, "11001100" after 350ns, "01000100" after 400ns, "10111011" after 450ns, "01010101" after 500ns, "10101010" after 550ns, "01100110" after 600ns, "10011001" after 650ns, "01110111" after 700ns, "10001000" after 750ns;
 
 END;
