@@ -2,9 +2,9 @@
 -- Company: Gr_C Equipe_2
 -- Engineer: GARCIA_FRANCOIS
 -- 
--- Create Date:    08:27:56 12/15/2020 
+-- Create Date:    14:09:57 03/01/2021 
 -- Design Name: 
--- Module Name:    register_1b_E - Behavioral 
+-- Module Name:    XOR2 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,24 +29,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity register_1b_E is
-    Port ( clk : in  STD_LOGIC;
-		   D : in  STD_LOGIC;
-           CE : in  STD_LOGIC;
-		   Q : out  STD_LOGIC 
-		  );
-end register_1b_E;
+entity XOR2 is
+    Port ( A : in  STD_LOGIC;
+           B : in  STD_LOGIC;
+           O : out  STD_LOGIC);
+end XOR2;
 
-architecture Behavioral of register_1b_E is
-signal Q_int : STD_LOGIC := '0';
+architecture Behavioral of XOR2 is
+
 begin
 
-	Q <= Q_int;
-	process(clk,D,CE)
-	begin
-		if(rising_edge(clk) and CE = '1') then 
-			Q_int <= D;
-		end if;
-	end process;
+	O <= A XOR B;
+
 end Behavioral;
 

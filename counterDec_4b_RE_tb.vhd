@@ -1,10 +1,10 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: Gr_C Equipe_2
+-- Engineer: GARCIA_FRANCOIS
 --
 -- Create Date:   19:04:56 16/02/2020 
 -- Design Name:   
--- Module Name:  register_1b_E - Testbench  
+-- Module Name:  counterDec_4b_RE - Testbench  
 -- Project Name:  
 -- Target Device:  
 -- Tool versions:  
@@ -32,20 +32,20 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY register_1b_E_tb IS
-END register_1b_E_tb;
+ENTITY counterDec_4b_RE_tb IS
+END counterDec_4b_RE_tb;
  
 
-ARCHITECTURE behavior OF register_1b_E_tb IS 
+ARCHITECTURE behavior OF counterDec_4b_RE_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT register_1b_E
+    COMPONENT counterDec_4b_RE
     Port ( R : in  STD_LOGIC;
 		   CE : in  STD_LOGIC;
            clk : in  STD_LOGIC;
            Q : out  STD_LOGIC_VECTOR (3 downto 0);
-		   TC : out  STD_LO
+		   TC : out  STD_LOGIC
 		  );
     END COMPONENT;
     
@@ -67,7 +67,7 @@ ARCHITECTURE behavior OF register_1b_E_tb IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: register_1b_E PORT MAP (
+   uut: counterDec_4b_RE PORT MAP (
 		  clk => clk,
  		  CE => CE,
 		  R => R,
@@ -83,8 +83,16 @@ begin
 	wait for clk_period/2;
 end process;
 
+CE_process:process
+begin
+	CE <= '0';
+	wait for 90 ns;
+	CE <= '1';
+	wait for 10 ns;
+end process;
+
 -- [0,150ns] = cas normal, [150ns, 300ns] = cas pour le role de CE
-R <= "1" after 0ns, "0" after 15ns, "1" after 100ns, "0" after 125ns
-CE <= "0" after 0ns, "1" after 10ns, "0" after 20ns, "1" after 30ns, "0" after 40ns, "1" after 50ns, "0" after 60ns, "1" after 70ns, "0" after 80ns, "1" after 90ns, "0" after 100ns, "1" after 110ns, "0" after 120ns, "1" after 130ns, "0" after 140ns, "1" after 150ns, "0" after 160ns, "1" after 170ns, "0" after 180ns, "1" after 190ns, "0" after 200ns, "1" after 210ns, "0" after 220ns, "1" after 230ns, "0" after 240ns, "1" after 250ns, "0" after 260ns, "1" after 270ns, "0" after 280ns, "1" after 290ns
+R <= '1' after 0ns, '0' after 15ns, '1' after 210ns, '0' after 230ns;
+--CE <= "0" after 0ns, "1" after 10ns, "0" after 20ns, "1" after 30ns, "0" after 40ns, "1" after 50ns, "0" after 60ns, "1" after 70ns, "0" after 80ns, "1" after 90ns, "0" after 100ns, "1" after 110ns, "0" after 120ns, "1" after 130ns, "0" after 140ns, "1" after 150ns, "0" after 160ns, "1" after 170ns, "0" after 180ns, "1" after 190ns, "0" after 200ns, "1" after 210ns, "0" after 220ns, "1" after 230ns, "0" after 240ns, "1" after 250ns, "0" after 260ns, "1" after 270ns, "0" after 280ns, "1" after 290ns
 
 END;

@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: Gr_C Equipe_2
+-- Engineer: GARCIA_FRANCOIS
 --
 -- Create Date:   19:04:56 16/02/2020 
 -- Design Name:   
@@ -61,6 +61,7 @@ ARCHITECTURE behavior OF register_1b_E_tb IS
    -- appropriate port name 
  
    constant clk_period : time := 10 ns;
+	constant CE_1ms_period : time := 100 ns;
  
 BEGIN
  
@@ -80,9 +81,17 @@ begin
 	wait for clk_period/2;
 end process;
 
+CE_process:process
+begin
+	CE <= '0';
+	wait for 90 ns;
+	CE <= '1';
+	wait for 10 ns;
+end process;
+
 -- [0,150ns] = cas normal, [150ns, 300ns] = cas pour le role de CE
-D <= "0" after 0ns, "1" after 50ns, "0" after 100ns, "1" after 150ns, "0" after 200ns, "1" after 250ns 
-CE <= "1" after 0ns, "0" after 175ns,"1" after 275ns
+D <= '0' after 0ns, '1' after 50ns, '0' after 150ns, '1' after 250 ns;
+--CE <= '1' after 0ns, '0' after 175ns,'1' after 275ns;
 
 
 END;

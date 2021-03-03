@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------------
--- Company: CPE
--- Engineer: Axel François 
+-- Company: 
+-- Engineer: Le corre, Deschamps
 -- 
--- Create Date:    19:04:56 16/02/2020 
+-- Create Date:    14:08:30 03/01/2021 
 -- Design Name: 
 -- Module Name:    equ45min - Behavioral 
--- Project Name: 
+-- Project Name: Scoring 2.0
 -- Target Devices: 
 -- Tool versions: 
 -- Description: 
@@ -30,13 +30,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity equ45min is
-    Port (	min_dec : IN  std_logic_vector(3 downto 0);
-			min_unit : IN  std_logic_vector(3 downto 0);
-			equ : OUT  std_logic
-		  );
+    Port ( min_dec : in  STD_LOGIC_VECTOR (3 downto 0);
+           min_unit : in  STD_LOGIC_VECTOR (3 downto 0);
+           equ : out  STD_LOGIC);
 end equ45min;
 
 architecture Behavioral of equ45min is
+
 begin
-	equ <= 	(NOT(min_dec(3)) AND min_dec(2) AND NOT(min_dec(2)) AND NOT(min_dec(1))) AND (NOT(min_unit(3)) AND min_unit(2) AND NOT(min_unit(2)) AND min_unit(1))
+
+equ <= '1' when (min_dec = "0100" AND min_unit = "0101") ELSE '0';
+
 end Behavioral;
+

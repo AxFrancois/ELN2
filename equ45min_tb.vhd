@@ -2,10 +2,10 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   15:10:39 02/22/2021
+-- Create Date:   14:29:59 03/01/2021
 -- Design Name:   
--- Module Name:   H:/Projet_Scoring/equ45min_tb.vhd
--- Project Name:  SCORING
+-- Module Name:   C:/CPE_USERS/TPELEC_3ETI/GR_C/ELN2/SCORING/EQUIPE_2/chronoscore_phase2/chronoscore_phase2/equ45min_tb.vhd
+-- Project Name:  chronoscore_phase2
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
@@ -40,11 +40,12 @@ ARCHITECTURE behavior OF equ45min_tb IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT equ45min
-		Port (	min_dec : IN  std_logic_vector(3 downto 0);
-				min_unit : IN  std_logic_vector(3 downto 0);
-				equ : OUT  std_logic
-			  );   
-	END COMPONENT;
+    PORT(
+         min_dec : IN  std_logic_vector(3 downto 0);
+         min_unit : IN  std_logic_vector(3 downto 0);
+         equ : OUT  std_logic
+        );
+    END COMPONENT;
     
 
    --Inputs
@@ -52,11 +53,11 @@ ARCHITECTURE behavior OF equ45min_tb IS
    signal min_unit : std_logic_vector(3 downto 0) := (others => '0');
 
  	--Outputs
-   signal equ : std_logic := '0';
+   signal equ : std_logic:= '0';
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
- 
-   --constant <clock>_period : time := 10 ns;
+-- 
+--   constant <clock>_period : time := 10 ns;
  
 BEGIN
  
@@ -64,10 +65,20 @@ BEGIN
    uut: equ45min PORT MAP (
           min_dec => min_dec,
           min_unit => min_unit,
-		  equ => equ
+          equ => equ
         );
-		  
-   -- Stimulus
+--
+--   -- Clock process definitions
+--   <clock>_process :process
+--   begin
+--		<clock> <= '0';
+--		wait for <clock>_period/2;
+--		<clock> <= '1';
+--		wait for <clock>_period/2;
+--   end process;
+-- 
+
+   -- Stimulus process
    -- DUREE DU TEST : 5120ns
 	 stim_proc : process
 	 variable I : integer range 0 to 15 := 0;
@@ -81,6 +92,6 @@ BEGIN
 				END LOOP;
 		END LOOP;
       wait;
-	 end process;  
+   end process;
 
 END;

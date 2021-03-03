@@ -1,16 +1,16 @@
 --------------------------------------------------------------------------------
 -- Company: 
--- Engineer:
+-- Engineer:Deschamps Le Corre
 --
--- Create Date:   16:05:29 03/01/2021
+-- Create Date:   15:02:49 03/01/2021
 -- Design Name:   
--- Module Name:   C:/CPE_USERS/TPELEC_3ETI/GR_C/ELN2/SCORING/EQUIPE_2/chronoscore_phase2/chronoscore_phase2/counterSen_4b_RE_tb.vhd
+-- Module Name:   C:/CPE_USERS/TPELEC_3ETI/GR_C/ELN2/SCORING/EQUIPE_2/chronoscore_phase2/chronoscore_phase2/register_1b_R_tb.vhd
 -- Project Name:  chronoscore_phase2
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: counterSen_4b_RE
+-- VHDL Test Bench Created by ISE for module: register_1b_R
 -- 
 -- Dependencies:
 -- 
@@ -30,66 +30,55 @@ USE ieee.std_logic_1164.ALL;
  
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
-USE ieee.numeric_std.ALL;
+--USE ieee.numeric_std.ALL;
  
-ENTITY counterSen_4b_RE_tb IS
-END counterSen_4b_RE_tb;
+ENTITY register_1b_R_tb IS
+END register_1b_R_tb;
+
  
-ARCHITECTURE behavior OF counterSen_4b_RE_tb IS 
+ARCHITECTURE behavior OF register_1b_R_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT counterSen_4b_RE
+    COMPONENT register_1b_R
     PORT(
          R : IN  std_logic;
-         CE : IN  std_logic;
+         D : IN  std_logic;
          clk : IN  std_logic;
-         Q : OUT  std_logic_vector(3 downto 0);
-         TC : OUT  std_logic
+         Q : OUT  std_logic
         );
     END COMPONENT;
     
 
    --Inputs
    signal R : std_logic := '0';
-   signal CE : std_logic := '0';
+   signal D : std_logic := '0';
    signal clk : std_logic := '0';
 
  	--Outputs
-   signal Q : std_logic_vector(3 downto 0);
-   signal TC : std_logic;
+   signal Q : std_logic;
 
    -- Clock period definitions
    constant clk_period : time := 10 ns;
-	constant CE_period : time := 100 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: counterSen_4b_RE PORT MAP (
+   uut: register_1b_R PORT MAP (
           R => R,
-          CE => CE,
+          D => D,
           clk => clk,
-          Q => Q,
-          TC => TC
+          Q => Q
         );
 
    -- Clock process definitions
-		clk_process :process
-		begin
-			clk <= '0';
-			wait for clk_period/2;
-			clk <= '1';
-			wait for clk_period/2;
-		end process;
-		
-		CE_process :process
-		begin
-			CE <= '0';
-			wait for 90 ns;
-			CE <= '1';
-			wait for 10 ns;
-		end process;
+   clk_process :process
+   begin
+		clk <= '0';
+		wait for clk_period/2;
+		clk <= '1';
+		wait for clk_period/2;
+   end process;
  
 
 --   -- Stimulus process
@@ -104,6 +93,10 @@ BEGIN
 --
 --      wait;
 --   end process;
-R <= '0', '1' after 400 ns, '0' after 500 ns;
+	
+
+-- [0,150ns] = cas normal, [150ns, 300ns] = cas pour le role de R
+D <= '0', '1' after 50 ns, '0' after 100 ns, '1' after 150 ns, '0' after 200 ns, '1' after 250 ns;
+R <= '0', '1' after 175 ns,'0' after 275 ns;
 
 END;

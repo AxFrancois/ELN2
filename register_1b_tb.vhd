@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: Gr_C Equipe_2
+-- Engineer: GARCIA_FRANCOIS
 --
 -- Create Date:   19:04:56 16/02/2020 
 -- Design Name:   
@@ -78,6 +78,6 @@ begin
 end process;
 
 --clk <= "0" after 25ns, "1" after 75ns, "0" after 125ns, "1" after 175ns, "0" after 225ns, "1" after 275ns, "0" after 325ns, "1" after 375ns, "0" after 425ns, "1" after 475ns, "0" after 525ns, "1" after 575ns, "0" after 625ns, "1" after 675ns, "0" after 725ns, "1" after 775ns
-D <= "0" after 25ns, "1" after 75ns, "0" after 125ns, "1" after 175ns, "0" after 225ns, "1" after 275ns, "0" after 325ns, "1" after 375ns
+D <= '0' after 0 ns, '1' after 80 ns, '0' after 95 ns, '1' after 110 ns;
 
 END;

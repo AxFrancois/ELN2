@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: CPE
--- Engineer: Axel François B216
+-- Company: Gr_C Equipe_2
+-- Engineer: GARCIA_FRANCOIS
 -- 
 -- Create Date:    08:27:56 12/15/2020 
 -- Design Name: 
@@ -37,7 +37,7 @@ entity register_1b is
 end register_1b;
 
 architecture Behavioral of register_1b is
-signal Q_int : STD_LOGIC;
+signal Q_int : STD_LOGIC := '0';
 begin
 
 	Q <= Q_int;
