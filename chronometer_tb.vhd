@@ -70,7 +70,7 @@ ARCHITECTURE behavior OF chronometer_tb IS
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
 	
-	constant CE_1s_period : time := 1000 ns;
+	constant CE_1s_period : time := 100 ns;
 	
  
 BEGIN
@@ -101,7 +101,7 @@ BEGIN
 	CE_1s_process :process
 	begin
 		CE_1s <= '0';
-		wait for 990 ns;
+		wait for 90 ns;
 		CE_1s <= '1';
 		wait for 10 ns;
 	end process;
@@ -120,7 +120,7 @@ BEGIN
 --   end process;
 
 
-	START <= '1';
+	START <= '1', '0' after 300 us, '1' after 350 us;
 	RESET <= '0' ;
    WAIT_t <= '0';
 

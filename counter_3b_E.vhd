@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+use ieee.std_logic_unsigned.all;
 
 
 -- Uncomment the following library declaration if instantiating
@@ -34,7 +34,7 @@ entity counter_3b_E is
 end counter_3b_E;
 
 architecture Behavioral of counter_3b_E is
-signal Q_int : STD_LOGIC_VECTOR (2 downto 0);
+signal Q_int : STD_LOGIC_VECTOR (2 downto 0):= "000";
 begin
 	Q <= Q_int;
 	process(clk,CE)

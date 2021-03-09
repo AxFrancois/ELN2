@@ -39,7 +39,7 @@ ARCHITECTURE behavior OF transcoder_3v8_tb IS
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT transcoder_3v8_tb
+    COMPONENT transcoder_3v8
     PORT(
 		   A : in  STD_LOGIC_VECTOR (2 downto 0);
            O : out  STD_LOGIC_VECTOR (7 downto 0)

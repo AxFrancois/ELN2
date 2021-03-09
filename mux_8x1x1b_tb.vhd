@@ -48,8 +48,8 @@ ARCHITECTURE behavior OF mux_8x1x1b_tb IS
 		   F : in  STD_LOGIC;
 		   G : in  STD_LOGIC;
 		   H : in  STD_LOGIC;
-           sel : in  STD_LOGIC_VECTOR (2 downto 0);
-           O : out  STD_LOGIC );
+         sel : in  STD_LOGIC_VECTOR (2 downto 0);
+         O : out  STD_LOGIC );
     END COMPONENT;
     
 

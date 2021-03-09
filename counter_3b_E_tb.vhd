@@ -32,16 +32,16 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY counter_3b_E IS
-END counter_3b_E;
+ENTITY counter_3b_E_tb IS
+END counter_3b_E_tb;
  
-ARCHITECTURE behavior OF counter_3b_E IS 
+ARCHITECTURE behavior OF counter_3b_E_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT counter_3b_E
     Port ( clk : in  STD_LOGIC;
-		   CE : in  STD_LOGIC;
+		     CE : in  STD_LOGIC;
            Q : out  STD_LOGIC_VECTOR (2 downto 0)
 		  );
     END COMPONENT;
@@ -49,7 +49,7 @@ ARCHITECTURE behavior OF counter_3b_E IS
 
    --Inputs
    signal clk : std_logic := '0';
-   signal CE : std_logic := '0';
+   signal CE_1ms : std_logic := '0';
    
 
  	--Outputs
@@ -57,17 +57,35 @@ ARCHITECTURE behavior OF counter_3b_E IS
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
-   constant <clk>_period : time := 20 ns;
+   constant clk_period : time := 10 ns;
+	constant CE_1ms_period : time := 100 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: counter_3b_E PORT MAP (
-		  CE => CE
-		  Q => Q
+		  CE => CE_1ms,
+		  Q => Q,
+		  clk => clk
         );
 
---clk <= "0" after 25ns, "1" after 75ns, "0" after 125ns, "1" after 175ns, "0" after 225ns, "1" after 275ns, "0" after 325ns, "1" after 375ns, "0" after 425ns, "1" after 475ns, "0" after 525ns, "1" after 575ns, "0" after 625ns, "1" after 675ns, "0" after 725ns, "1" after 775ns
-CE <= "0" after 25ns, "1" after 75ns, "0" after 125ns, "1" after 175ns, "0" after 225ns, "1" after 275ns, "0" after 325ns, "1" after 375ns, "0" after 425ns, "1" after 475ns, "0" after 525ns, "1" after 575ns, "0" after 625ns, "1" after 675ns, "0" after 725ns, "1" after 775ns, "0" after 825ns, "1" after 875ns, "0" after 925ns, "1" after 975ns
+clk_process:process
+begin
+	clk<= '0';
+	wait for clk_period/2;
+	clk<= '1';
+	wait for clk_period/2;
+end process;
+
+CE_1ms_process:process
+begin
+	CE_1ms <= '0';
+	wait for 90 ns;
+	CE_1ms <= '1';
+	wait for 10 ns;
+end process;
+
+--clk <= '0' after 25ns, '1' after 75ns, '0' after 125ns, '1' after 175ns, '0' after 225ns, '1' after 275ns, '0' after 325ns, '1' after 375ns, '0' after 425ns, '1' after 475ns, '0' after 525ns, '1' after 575ns, '0' after 625ns, '1' after 675ns, '0' after 725ns, '1' after 775ns
+--CE <= '0' after 25ns, '1' after 75ns, '0' after 125ns, '1' after 175ns, '0' after 225ns, '1' after 275ns, '0' after 325ns, '1' after 375ns, '0' after 425ns, '1' after 475ns, '0' after 525ns, '1' after 575ns, '0' after 625ns, '1' after 675ns, '0' after 725ns, '1' after 775ns, '0' after 825ns, '1' after 875ns, '0' after 925ns, '1' after 975ns;
 
 END;
